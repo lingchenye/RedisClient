@@ -35,7 +35,6 @@ bool RUtil::create_message(
 		else if (params[i].isArray())
 		{
 			std::vector<RVariant> sub_params = params[i].toArray();
-			ss << 
 		}
 		else
 		{

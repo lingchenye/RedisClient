@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include <boost/asio/io_service.hpp>
+
 #include "RVariant.h"
 
 #include "RedisClient_global.h"

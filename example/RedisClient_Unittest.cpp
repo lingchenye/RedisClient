@@ -11,11 +11,8 @@
 #include "../Redisclient/RSyncClient.h"
 #include "../RedisClient/RAsyncClient.h"
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	std::string log_str("{fa}{fdsa}ºÍ{fs}");
-
-	boost::asio::io_service io_src;
+int main()
+{	boost::asio::io_service io_src;
 	boost::asio::io_service::work worker(io_src);
 
 	{
