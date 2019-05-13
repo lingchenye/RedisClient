@@ -6,7 +6,6 @@
 #		define REDISCLIENT_GLOBAL_DECL __declspec(dllexport)
 #	else
 #		define REDISCLIENT_GLOBAL_DECL __declspec(dllimport)
-#		pragma comment(lib, "RedisClient.lib")
 #	endif
 #else
 #define REDISCLIENT_GLOBAL_DECL

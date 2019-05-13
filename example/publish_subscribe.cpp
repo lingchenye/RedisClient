@@ -8,8 +8,8 @@
 #include <boost/regex.hpp>
 #include <boost/asio/io_service.hpp>
 
-#include "../Redisclient/RSyncClient.h"
-#include "../RedisClient/RAsyncClient.h"
+#include "RSyncClient.h"
+#include "RAsyncClient.h"
 
 int main()
 {

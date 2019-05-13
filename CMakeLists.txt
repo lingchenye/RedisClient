@@ -3,34 +3,31 @@ project (RedisClient)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_DEBUG_POSTFIX "d")
 
 add_compile_options(-std=c++11)
 
 find_package(
     Boost
     COMPONENTS
-        chrono
-        coroutine
-        filesystem
         system
         thread
     REQUIRED
 )
 
+message(STATUS "CMAKE_BINARY_DIR" ${CMAKE_BINARY_DIR})
+
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+
 include_directories(${RedisClient_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
-link_directories(${Boost_LIBRARY_DIRS})
+link_directories(${Boost_LIBRARY_DIRS} ${LIBRARY_OUTPUT_PATH})
 
-aux_source_directory(./src SRC_LIST)
-add_library(RedisClient SHARED ${SRC_LIST})
+include_directories(${RedisClient_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS} ${LIBRARY_OUTPUT_PATH})
 
-#add_executable(sync_set_get ./example/sync_set_get.cpp)
-#target_link_libraries(sync_set_get RedisClient)
-
-add_executable(async_set_get ./example/async_set_get.cpp)
-target_link_libraries(async_set_get RedisClient boost_thread boost_system pthread)
-
-#add_executable(publish_subscribe ./example/publish_subscribe.cpp)
-#target_link_libraries(publish_subscribe RedisClient)
+add_subdirectory(./src)
+add_subdirectory(./example)
 
 
 
